@@ -32,7 +32,7 @@ paintutils.drawImage(starstang,1,1)
 term.setCursorPos(1,15)
 print("And in part with StarStang")
 term.setCursorPos(8,16)
-print("productions")
+print("Games(TM)")
 sleep(4)
 Fout()
 
