@@ -1,0 +1,272 @@
+-- company screens
+ompple = paintutils.loadImage('ACUGE/img/logo2')
+starstang = paintutils.loadImage('ACUGE/img/logo1')
+function Fin()
+term.setBackgroundColor(colors.gray)
+term.clear()
+term.setCursorPos(1,1)
+sleep(.1)
+term.setBackgroundColor(colors.white)
+term.clear()
+term.setCursorPos(1,1)
+end
+function Fout()
+ term.setBackgroundColor(colors.gray)
+ term.clear()
+ term.setCursorPos(1,1)
+ sleep(.1)
+ term.setBackgroundColor(colors.black)
+ term.clear()
+ term.setCursorPos(1,1)
+ sleep(.1)
+end
+
+Fin()
+paintutils.drawImage(ompple,1,1)
+term.setCursorPos(5, 15)
+print("An Ompple co. game")
+sleep(3)
+Fout()
+Fin()
+paintutils.drawImage(starstang,1,1)
+term.setCursorPos(1,15)
+print("And in part with StarStang")
+term.setCursorPos(8,16)
+print("productions")
+sleep(4)
+Fout()
+
+-- game
+pur = 0
+cookies = 0
+clicks = 0
+cps = 0
+mult = 1
+
+shop1 = 100000000
+shop2 = 200
+shop3 = 2000
+shop4 = 1000000
+term.setBackgroundColor(colors.black)
+function tBar()
+  term.clear()
+  term.setCursorPos(1,1)
+end
+function logo()
+  term.setTextColor(colors.red)
+  term.clear()
+  term.setCursorPos(1,1)
+  print("--------------------------")
+  print("| *                    * |")
+  print("|     Welcome, Player    |")       
+  print("|                        |")
+  print("|                        |")
+  print("|      *       *         |")
+  print("|         -------        |")
+  print("|      --- ASCII ---     |")
+  print("|     --- Clicker ---    |")
+  print("|   *    ---------       |")
+  print("|      **Ultimate**      |")
+  print("|   **Grandma Edition**  |")
+  print("|                  *     |")
+  print("|    *                   |")
+  print("|                        |")
+  print("|                        |")
+  print("|<You may click anywhere>|")
+  print("|       <to play>        |")
+  print("--------------------------")
+  os.pullEvent("mouse_click")
+  main()
+end
+function Einfo()
+	term.setCursorPos(3,7)
+	print("^")
+	term.setCursorPos(1,8)
+	print("Power ups")
+	
+	term.setCursorPos(1,10)
+	print("Cookie>")
+	
+	term.setCursorPos(1,15)
+	print("Menu")
+	term.setCursorPos(2,16)
+	print("V")
+	
+	term.setCursorPos(22, 15)
+	print("Shop")
+	term.setCursorPos(23,16)
+	print("V")
+	
+	os.pullEvent('mouse_click')
+	main()
+end
+
+function Click()
+	cookies = cookies + mult
+	clicks = clicks + 1
+end
+
+function grandmaI()
+	if cookies >= 15 then 
+	cookies = cookies - 15
+	cps = cps + 0.1
+	pur = pur + 1
+	main()
+	else main()
+  end
+end
+function grandmaII()
+	if cookies >= 100 then 
+	cookies = cookies - 100
+	cps = cps + 1
+	pur = pur + 1
+	main()
+	else main()
+  end
+end
+function grandmaIII()
+	if cookies >= 500 then 
+	cookies = cookies - 500
+	cps = cps + 5
+	pur = pur + 1
+	main()
+	else main()
+  end
+end
+function grandmaIV()
+	if cookies >= 200000 then 
+	cookies = cookies - 200000
+	cps = cps + 15
+	pur = pur + 1
+	main()
+	else main()
+  end
+end
+function grandmaV()
+	if cookies >= 100000000 then
+	cookies = cookies - 100000000
+	cps = cps + 150
+	pur = pur + 1
+	main()
+	else main()
+  end
+end
+
+function AYSabout()
+term.setCursorPos(10,8)
+print("---------------")
+term.setCursorPos(10,9)
+print(" are you sure? ")
+term.setCursorPos(10,10)
+print("     (y/n)     ")
+term.setCursorPos(10,11)
+print("---------------")
+	event, key = os.pullEvent("key")
+		if key == 21 then about()
+		elseif key == 49 then main()
+		else AYSabout()
+	end
+end
+function menu()
+	term.setCursorPos(1,11)
+	print("---------")
+	term.setCursorPos(1,12)
+	print("| about |")
+	term.setCursorPos(1,13)
+	print("| exit  |")
+	term.setCursorPos(1,14)
+	print("| save  |")
+	term.setCursorPos(1,15)
+	print("| load  |")
+	term.setCursorPos(1,16)
+	print("---------")
+	event, click, x, y = os.pullEvent("mouse_click")
+		if x >= 1 and x <= 9 and y == 12 then AYSabout()
+		elseif x >= 1 and x <= 9 and y == 13 then exit()
+		elseif x >= 1 and x <= 9 and y == 14 then save()
+		elseif x >= 1 and x <= 9 and y == 15 then load()
+		else main()
+	end
+end
+function AYSexit()
+term.setCursorPos(10,8)
+print("---------------")
+term.setCursorPos(10,9)
+print(" are you sure? ")
+term.setCursorPos(10,10)
+print("     (y/n)     ")
+term.setCursorPos(10,11)
+print("---------------")
+	event, key = os.pullEvent("key")
+		if key == 21 then about()
+		elseif key == 49 then main()
+		else exit()
+	end
+end
+
+function shop()
+	tBar()
+  print("<exit>----<shop>----------")
+  print("()x2 cps($"..shop1..")")
+  print("()+5 click($"..shop2..")")
+  print("()+50 click($"..shop3..")")
+  print("()x2 click($"..shop4..")")
+  print("                          ")
+  print("                          ")
+  print("                          ")
+  print("                          ")
+  print("                          ")
+  print("                          ")
+  print("                          ")
+  print("                          ")
+  print("                          ")
+  print("                          ")
+  print("                          ")
+  print("                          ")
+  print("                          ")
+  print("--------------------------")
+  event, click, x, y = os.pullEvent("mouse_click")
+	if x >= 1 and x <= 6 and y == 1 then main()
+	elseif x >= 1 and x <= 2 and y == 2 then x2cps()
+	elseif x >= 1 and x <= 2 and y == 3 then p5click()
+	elseif x >= 1 and x <= 2 and y == 4 then p50click()
+	elseif x >= 1 and x <= 2 and y == 5 then x2click()
+	else shop()
+  end
+end
+
+function main()
+tBar()
+  print("              <Extra Info>")
+  print("Grandma($15)              ")
+  print("Super Grandma($100)       ")       
+  print("Amazing Grandma($500)     ")
+  print("Grandma Bot($20000)       ")
+  print("UTTG Grandma($100000000)  ")
+  print("          _____           ")
+  print("         [ *   ]          ")
+  print("        [   *   ]         ")
+  print("         [_____]          ")
+  print("                          ")
+  print("Cookies:"..cookies)
+  print("CpS:"..cps)
+  print("Clicks"..clicks)
+  print("                          ")
+  print("                          ")
+  print("<menu>              <shop>")
+  print("--------------------------")
+  local event, click, x, y = os.pullEvent('mouse_click')
+		if x >= 1 and x <= 6 and y == 17 then menu()
+		elseif x >= 15 and x <= 27 and y == 1 then  Einfo()
+		elseif x >= 21 and x <= 27 and y == 17 then shop() 
+		elseif y == 9 or y ==10 or y == 11 and x >= 12 and x <= 17 then Click() main()
+		elseif x >= 1 and x <= 12 and y == 2 then grandmaI()
+		elseif x >= 1 and x <= 19 and y == 3 then grandmaII()
+		elseif x >= 1 and x <= 21 and y == 4 then grandmaIII()
+		elseif x >= 1 and x <= 19 and y == 5 then grandmaIV()
+		elseif x >= 1 and x <= 24 and y == 6 then grandmaV()
+		else main()
+	end
+end
+
+logo()
